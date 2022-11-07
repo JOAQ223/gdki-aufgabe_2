@@ -2,13 +2,26 @@ import pandas as pd
 import numpy as np
 from sklearn.impute import SimpleImputer
 
-numeric_cols= columns_to_use = [
+# datei has the date if pasager was transported or not, that helps to train the model
+tita = pd.read_csv('spaceship_train.csv',index_col=0)
+#test of data was readet 
+tita.head()
 
-]
+tita.isnull().sum()
+print(tita.isnull().sum())
+
+#tita[tita['Name']].isnull()
+#print(tita[tita['Name']].isnull())
+
+titanicfill = tita.fillna(value = 0)
+
+print(titanicfill.isnull().sum())
 
 
-data = pd.read_csv('hosueprice.csv',isecols = numeric_cols)
+""" imp = SimpleImputer(missing_values=np.nan, strategy='mean')
+imp.fit([[1, 2], [np.nan, 3], [7, 6]])
+SimpleImputer()
 
-data.tail();
+X = [[np.nan, 2], [6, np.nan], [7, 6]]
 
-imputer = SimpleImputer
+isnull().sum() """
